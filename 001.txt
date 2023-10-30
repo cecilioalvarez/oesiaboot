@@ -1,0 +1,27 @@
+ docker run hello-world //lo que nos dice es que ejecuta una imagen
+ docker images // esto nos lista una imagen
+ docker container ls //esto nos lista los contenedores
+ docker container ls -a //nos lista los contenedores aunque no esten activos
+ docker rm d7 //docker rm contenedor-nombre elimina el contenedor que tenemos en docker
+ docker image rm imagen-nombre // elimina la imagen que nos hemos descargado
+ docker pull nombre-imagen //se trae la imagen
+docker container ls -a --format "{{.ID}}"
+docker container ls -a --format "{{.ID}} {{.Names}}"
+docker container rm micontenedor //eliminar por nombre
+docker pull mysql
+docker run --name mi_mysql  -e MYSQL_ROOT_PASSWORD=cecilio  mysql
+docker run --name milinux  -d  alpine
+docker exec -it mi_mysql bash
+mysql -u root -p 
+show databases;
+docker logs mi_mysql
+docker pull nginx
+docker run --name mi_nginx -d nginx
+docker exec -it mi_nginx bash
+docker inspect -f "{{.ID}}{{.IPAddress}}" 
+docker run --name mi_nginx -d  -p 8080:80 nginx
+docker run --name mi_phpmyadmin -d  -p 8080:80 phpmyadmin
+docker run --name mi_phpmyadmin -d --link mi_mysql:db -p 8080:80 phpmyadmin
+
+
+

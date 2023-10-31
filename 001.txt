@@ -35,4 +35,5 @@ docker exec -it tomcat bash
 docker container ls -a --format "{{.ID}} {{.Names}}"
 docker cp .\weboseia.war tomcat:/usr/local/tomcat/webapps
  docker build -t tomcatapp .
- docker run --name tomcat -p 8080:8080 tomcatapp
+ docker run --name mitomcatapp -p 8080:8080 tomcatapp
+  docker run --name mitomcatapp2 -p 8081:8080 tomcatapp

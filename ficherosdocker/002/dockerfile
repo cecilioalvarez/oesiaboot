@@ -1,0 +1,6 @@
+FROM tomcat
+#oye generame la carpeta para el codigo fuente de mi aplicacion en el contenedor
+RUN mkdir /usr/src/miapp
+#RUN git clone https://github.com/cecilioalvarez/weboesia.git
+WORKDIR /usr/src/miapp
+RUN jar -cvf miapp.war .

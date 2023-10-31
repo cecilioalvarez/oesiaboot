@@ -22,6 +22,9 @@ docker inspect -f "{{.ID}}{{.IPAddress}}"
 docker run --name mi_nginx -d  -p 8080:80 nginx
 docker run --name mi_phpmyadmin -d  -p 8080:80 phpmyadmin
 docker run --name mi_phpmyadmin -d --link mi_mysql:db -p 8080:80 phpmyadmin
-
-
-
+docker exec -it mi_mysql bash
+docker network create mired
+docker network ls
+docker pull wordpress
+docker container run --name miwordpress --network mired -p 8081:80 -e WORDPRESS_DB_HOST=mi_mysql -e WORDPRESS_DB_USER=root -e WORDPRESS_DB_PASSWORD=cecilio  -e WORDPRESS_DB_NAME=wordpress -d  wordpress
+docker network inspect mired

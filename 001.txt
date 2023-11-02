@@ -43,3 +43,5 @@ docker build -t nodeapp  .
 /usr/local/tomcat/lib/servlet-api.jar  
 docker run --name minode -p 3000:3000  nodeapp
 javac -cp /usr/local/tomcat/lib/servlet-api.jar  HolaSQL.java 
+
+docker run --name mispringboot -p 8080:8080  nodeapp

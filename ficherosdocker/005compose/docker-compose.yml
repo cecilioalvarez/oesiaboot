@@ -6,8 +6,11 @@ services:
        container_name: "mimysql"
        environment:
           MYSQL_ROOT_PASSWORD : "miclave"
+          MYSQL_DATABASE: "wordpress"
        expose:
           - "3306"
+       networks:
+          - "mired"
      wordpress:
        image: "wordpress"
        container_name: "miwordpress"
@@ -15,12 +18,15 @@ services:
          WORDPRESS_DB_HOST: "mimysql"
          WORDPRESS_DB_USER: "root"
          WORDPRESS_DB_PASSWORD: "miclave"
-         WORDPRESS_DB_NAME : "wordpress"
-       links:
-         - basedatos
+         WORDPRESS_DB_NAME: "wordpress"
        ports:
           - "8080:80"
+       networks:
+          - "mired"
        depends_on:
           - basedatos
+networks:
+    mired:
+
 
        

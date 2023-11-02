@@ -1,0 +1,10 @@
+# esto es un fichero yaml
+version: "3"
+services:
+     basedatos:
+       image: "mysql"
+       container_name: "mimysql"
+       environment:
+          MYSQL_ROOT_PASSWORD : "miclave"
+       expose:
+          - "3306"

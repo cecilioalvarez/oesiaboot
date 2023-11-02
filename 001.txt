@@ -42,4 +42,4 @@ docker run --name mitomcatapp -p 8080:8080 mitomcat
 docker build -t nodeapp  .
 /usr/local/tomcat/lib/servlet-api.jar  
 docker run --name minode -p 3000:3000  nodeapp
-
+javac -cp /usr/local/tomcat/lib/servlet-api.jar  HolaSQL.java 

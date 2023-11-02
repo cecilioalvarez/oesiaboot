@@ -8,3 +8,15 @@ services:
           MYSQL_ROOT_PASSWORD : "miclave"
        expose:
           - "3306"
+     wordpress:
+       image: "wordpress"
+       container_name: "miwordpress"
+       environment:
+         WORDPRESS_DB_HOST: "mimysql"
+         WORDPRESS_DB_USER: "root"
+         WORDPRESS_DB_PASSWORD: "miclave"
+         WORDPRESS_DB_NAME : "wordpress"
+       ports:
+          - "8080:80"
+
+       

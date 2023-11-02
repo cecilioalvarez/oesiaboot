@@ -1,0 +1,12 @@
+FROM node
+#oye generame la carpeta para el codigo fuente de mi aplicacion en el contenedor
+RUN mkdir /usr/src/miapp
+WORKDIR /usr/src/miapp
+RUN git clone https://github.com/cecilioalvarez/dockernode.git
+WORKDIR /usr/src/miapp/dockernode
+RUN npm install
+EXPOSE 3000
+CMD ["node","servidor.js"]
+#RUN jar -cvf miapp.war .
+#RUN cp /usr/src/miapp/weboesia/weboseia/src/main/webapp/miapp.war /usr/local/tomcat/webapps
+#EXPOSE 8080

@@ -1,4 +1,4 @@
-FROM  mysql:5.7
+FROM  mysql:${MYSQL_TAG}
 RUN mkdir /usr/src/mysql
 ADD setup.sql /usr/src/mysql
 WORKDIR /usr/src/mysql

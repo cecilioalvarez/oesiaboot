@@ -15,6 +15,7 @@ services:
       networks:
           - "mired"
      basedatos:
+       env_file: mysql.env
        image: "mysql"
        container_name: "mimysql"
        environment:
@@ -40,6 +41,18 @@ services:
          - mysql_data:/data
        depends_on:
           - basedatos
+
+      springboot:
+       build:
+         context: .
+         dockerfile: docker-file-boot
+       container_name: "boot1"
+       ports:
+          - "8080:8080"
+       networks:
+          - "mired"
+       depends_on:
+        - basedatos
 networks:
     mired:
 volumes:

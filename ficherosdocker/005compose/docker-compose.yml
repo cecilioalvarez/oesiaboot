@@ -1,6 +1,16 @@
 # esto es un fichero yaml
 version: "3"
 services:
+     phpmyadmin:
+      image: phpmyadmin/phpmyadmin
+      container_name: phpmyadmin
+      ports:
+        - "8081:80"
+      environment:
+        PMA_HOST: basedatos
+        PMA_PORT: 3306
+        MYSQL_ROOT_PASSWORD: miclave
+
      basedatos:
        image: "mysql"
        container_name: "mimysql"

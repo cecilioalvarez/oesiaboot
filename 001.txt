@@ -48,3 +48,6 @@ docker run --name mispringboot -p 8080:8080  nodeapp
 
 docker run -p 8080:8080 -p 50000:50000 --restart=on-failure jenkins/jenkins:lts-jdk17
 1b78565bf1134262944b2ee60a41f6a9
+
+docker build -t mi_mysql  .
+docker run --name mi_mysqlc  -e MYSQL_ROOT_PASSWORD=cecilio  mi_mysql

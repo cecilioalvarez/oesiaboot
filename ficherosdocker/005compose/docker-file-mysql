@@ -3,5 +3,6 @@ RUN mkdir /usr/src/mysql
 ADD setup.sql /usr/src/mysql
 WORKDIR /usr/src/mysql
 COPY setup.sql /docker-entrypoint-initdb.d/
+EXPOSE 3306
 
 

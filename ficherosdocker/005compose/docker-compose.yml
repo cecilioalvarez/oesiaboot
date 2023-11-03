@@ -7,14 +7,15 @@ services:
       ports:
         - "8081:80"
       environment:
-        PMA_HOST: basedatos
+        PMA_HOST: "mimysql"
         PMA_PORT: 3306
-        MYSQL_ROOT_PASSWORD: miclave
-
+        MYSQL_ROOT_PASSWORD: "miclave"
+      depends_on:
+          - basedatos
+      networks:
+          - "mired"
      basedatos:
-       build:
-         context: .
-         dockerfile: docker-file-mysql
+       image: "mysql"
        container_name: "mimysql"
        environment:
           MYSQL_ROOT_PASSWORD : "miclave"
@@ -23,19 +24,22 @@ services:
           - "3306"
        networks:
           - "mired"
-
-     springboot:
-       build:
-         context: .
-         dockerfile: docker-file-boot
-       container_name: "boot1"
-       expose:
-          - "8080"
+     wordpress:
+       image: "wordpress"
+       container_name: "miwordpress"
+       environment:
+         WORDPRESS_DB_HOST: "mimysql"
+         WORDPRESS_DB_USER: "root"
+         WORDPRESS_DB_PASSWORD: "miclave"
+         WORDPRESS_DB_NAME: "wordpress"
+       ports:
+          - "8080:80"
        networks:
           - "mired"
+       volumes:
+         - mysql_data:/data
        depends_on:
-        - basedatos
-    
+          - basedatos
 networks:
     mired:
 volumes:

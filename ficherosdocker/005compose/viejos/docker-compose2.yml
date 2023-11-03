@@ -1,0 +1,45 @@
+# esto es un fichero yaml
+version: "3"
+services:
+     phpmyadmin:
+      image: phpmyadmin/phpmyadmin
+      container_name: phpmyadmin
+      ports:
+        - "8081:80"
+      environment:
+        PMA_HOST: basedatos
+        PMA_PORT: 3306
+        MYSQL_ROOT_PASSWORD: miclave
+
+     basedatos:
+       build:
+         context: .
+         dockerfile: docker-file-mysql
+       container_name: "mimysql"
+       environment:
+          MYSQL_ROOT_PASSWORD : "miclave"
+          MYSQL_DATABASE: "wordpress"
+       expose:
+          - "3306"
+       networks:
+          - "mired"
+
+     springboot:
+       build:
+         context: .
+         dockerfile: docker-file-boot
+       container_name: "boot1"
+       expose:
+          - "8080"
+       networks:
+          - "mired"
+       depends_on:
+        - basedatos
+    
+networks:
+    mired:
+volumes:
+  mysql_data:
+
+
+       

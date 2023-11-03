@@ -1,7 +1,13 @@
 package es.oesia.webboot;
 
-public class Persona {
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
+@Entity
+@Table (name="Personas")
+public class Persona {
+	@Id
 	private String nombre;
 
 	public String getNombre() {
@@ -16,5 +22,5 @@ public class Persona {
 		super();
 		this.nombre = nombre;
 	}
-	
+
 }

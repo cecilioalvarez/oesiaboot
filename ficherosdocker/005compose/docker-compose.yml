@@ -23,10 +23,14 @@ services:
           - "8080:80"
        networks:
           - "mired"
+       volumes:
+         - mysql_data:/data
        depends_on:
           - basedatos
 networks:
     mired:
+volumes:
+  mysql_data:
 
 
        

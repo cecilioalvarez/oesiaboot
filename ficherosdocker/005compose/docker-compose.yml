@@ -23,22 +23,19 @@ services:
           - "3306"
        networks:
           - "mired"
-     wordpress:
-       image: "wordpress"
-       container_name: "miwordpress"
-       environment:
-         WORDPRESS_DB_HOST: "mimysql"
-         WORDPRESS_DB_USER: "root"
-         WORDPRESS_DB_PASSWORD: "miclave"
-         WORDPRESS_DB_NAME: "wordpress"
-       ports:
-          - "8080:80"
+
+     springboot:
+       build:
+         context: .
+         dockerfile: docker-file-boot
+       container_name: "boot1"
+       expose:
+          - "8080"
        networks:
           - "mired"
-       volumes:
-         - mysql_data:/data
        depends_on:
-          - basedatos
+        - basedatos
+    
 networks:
     mired:
 volumes:

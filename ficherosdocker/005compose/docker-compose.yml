@@ -15,7 +15,6 @@ services:
       networks:
           - "mired"
      basedatos:
-       env_file: mysql.env
        image: "mysql"
        container_name: "mimysql"
        environment:
@@ -34,7 +33,7 @@ services:
          WORDPRESS_DB_PASSWORD: "miclave"
          WORDPRESS_DB_NAME: "wordpress"
        ports:
-          - "8080:80"
+          - "8082:80"
        networks:
           - "mired"
        volumes:
@@ -42,13 +41,13 @@ services:
        depends_on:
           - basedatos
 
-      springboot:
+     springboot:
        build:
          context: .
          dockerfile: docker-file-boot
        container_name: "boot1"
        ports:
-          - "8080:8080"
+          - "8084:8080"
        networks:
           - "mired"
        depends_on:

@@ -1,0 +1,5 @@
+FROM eclipse-temurin:17
+RUN mkdir /opt/app
+COPY web-1.jar /opt/app
+CMD ["java", "-jar", "/opt/app/web-1.jar"]
+EXPOSE 8080
